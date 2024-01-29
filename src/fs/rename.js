@@ -1,6 +1,5 @@
 import { access, rename as fsrename, constants } from 'fs';
 
-
 import { FS_DIR, FS_ERROR } from './fsconst';
 
 const rename = async () => {
