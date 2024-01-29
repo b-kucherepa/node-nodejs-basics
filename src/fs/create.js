@@ -1,14 +1,12 @@
-import fs from 'fs';
+import { writeFile } from 'fs';
+import { FS_DIR, FS_ERROR } from './fsconst';
 
 const create = async () => {
-    fs.access('files/fresh.txt', fs.constants.F_OK, (err) => {
+    await writeFile(FS_DIR + '/files/' + 'fresh.txt', 'I am fresh and young!', {flag: 'wx'}, function (err) {
         if (err) {
-            fs.writeFileSync('files/fresh.txt', 'I am fresh and young!');
-        }
-        else {
-            throw new Error('FS operation failed');
+            throw new Error(FS_ERROR);
         }
     });
-}
+};
 
 await create();
