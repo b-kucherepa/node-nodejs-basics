@@ -1,5 +1,5 @@
 import { unlink } from 'fs';
-import { FS_DIR, FS_ERROR } from './fsconst';
+import { FS_DIR, FS_ERROR } from './fsconst.js';
 
 const remove = async () => {
     await unlink(FS_DIR + '/files/fileToRemove.txt', (err) => {

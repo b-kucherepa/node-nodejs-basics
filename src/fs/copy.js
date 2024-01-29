@@ -1,5 +1,5 @@
 import { cp } from 'fs';
-import { FS_DIR, FS_ERROR } from './fsconst';
+import { FS_DIR, FS_ERROR } from './fsconst.js';
 
 const copy = async () => {
     await cp(FS_DIR + '/files', FS_DIR + '/files_copy', { force: false, overwrite: false, errorOnExist: true, recursive: true }, (err) => {
