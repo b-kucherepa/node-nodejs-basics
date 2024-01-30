@@ -1,4 +1,5 @@
 const PREFIX = '--';
+
 const parseArgs = () => {
     let argString = '';
     const argsArray = process.argv.slice(2);
