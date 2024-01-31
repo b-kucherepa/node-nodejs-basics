@@ -1,8 +1,9 @@
 import { readFile } from 'fs';
-import { FS_DIR, FS_ERROR } from './fsconst.js';
+const PROJ_DIR = process.cwd();
+const FS_ERROR = 'FS operation failed';
 
 const read = async () => {
-    await readFile(FS_DIR + '/files/fileToRead.txt', 'utf8', (err, data) => {
+    await readFile(PROJ_DIR + '/src/fs/files/fileToRead.txt', 'utf8', (err, data) => {
         if (err) {
             throw new Error(FS_ERROR);
         }

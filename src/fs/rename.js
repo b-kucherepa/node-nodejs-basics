@@ -1,15 +1,15 @@
 import { access, rename as fsrename, constants } from 'fs';
-
-import { FS_DIR, FS_ERROR } from './fsconst.js';
+const PROJ_DIR = process.cwd();
+const FS_ERROR = 'FS operation failed';
 
 const rename = async () => {
-    await access(FS_DIR + '/files/properFilename.md', constants.F_OK, (err) => {
+    await access(PROJ_DIR + '/src/fs/files/properFilename.md', constants.F_OK, (err) => {
         if (!err) {
             throw new Error(FS_ERROR);
         }
     });
 
-    await fsrename(FS_DIR + '/files/wrongFilename.txt', FS_DIR + '/files/properFilename.md', (err) => {
+    await fsrename(PROJ_DIR + '/src/fs/files/wrongFilename.txt', PROJ_DIR + '/src/fs/files/properFilename.md', (err) => {
         if (err) {
             throw new Error(FS_ERROR);
         }

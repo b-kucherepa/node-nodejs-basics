@@ -1,8 +1,9 @@
 import { readdir } from 'fs';
-import { FS_DIR, FS_ERROR } from './fsconst.js';
+const PROJ_DIR = process.cwd();
+const FS_ERROR = 'FS operation failed';
 
 const list = async () => {
-    await readdir(FS_DIR + '/files', (err, files) => {
+    await readdir(PROJ_DIR + '/src/fs/files', (err, files) => {
         if (err) {
             throw new Error(FS_ERROR);
         }

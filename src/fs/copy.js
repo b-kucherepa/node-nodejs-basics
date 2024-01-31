@@ -1,8 +1,10 @@
 import { cp } from 'fs';
-import { FS_DIR, FS_ERROR } from './fsconst.js';
+const PROJ_DIR = process.cwd();
+const FS_ERROR = 'FS operation failed';
 
 const copy = async () => {
-    await cp(FS_DIR + '/files', FS_DIR + '/files_copy', { force: false, overwrite: false, errorOnExist: true, recursive: true }, (err) => {
+    console.log(PROJ_DIR + '/src/fs/files');
+    await cp(PROJ_DIR + '/src/fs/files', PROJ_DIR + '/src/fs/files_copy', { force: false, overwrite: false, errorOnExist: true, recursive: true }, (err) => {
         if (err) {
             throw new Error(FS_ERROR);
         }
