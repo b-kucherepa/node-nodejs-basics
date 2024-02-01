@@ -1,10 +1,14 @@
 import { readdir } from 'fs/promises';
-const PROJ_DIR = process.cwd();
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const FS_ERROR = 'FS operation failed';
 
 const list = async () => {
     try {
-        const files = await readdir(PROJ_DIR + '/src/fs/files');
+        const files = await readdir(__dirname + '/files');
 
         files.forEach(file => {
             console.log(file);

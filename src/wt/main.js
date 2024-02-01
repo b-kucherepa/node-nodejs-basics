@@ -1,11 +1,15 @@
 import { cpus } from 'os';
 import { Worker } from 'worker_threads';
-const PROJ_DIR = process.cwd();
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const START_NUM = 10;
 
 const performCalculations = async () => {
     function calcFibonacci(n) {
-        const worker = new Worker(PROJ_DIR + '/src/wt/worker.js', { workerData: n });
+        const worker = new Worker(__dirname + '/worker.js', { workerData: n });
         return new Promise((resolve) => {
             worker.addListener('message', (data) => resolve({ status: 'resolved', data: data }));
             worker.addListener('error', (data) => resolve({ status: 'error', data: null }));
